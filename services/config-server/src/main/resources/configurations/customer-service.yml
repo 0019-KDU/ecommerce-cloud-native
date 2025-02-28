@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://chirantharavishka:chira0019@cluster0.dposl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+server:
+  port: 8090
