@@ -1,26 +1,24 @@
 server:
-  port: 8070
+  port: 8060
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/order
-    username: postgres
-    password: 12345q
+    url: jdbc:postgresql://localhost:5432/payment
+    username: alibou
+    password: alibou
   jpa:
     hibernate:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
   kafka:
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.type.mapping: orderConfirmation:com.chiradev.ecommerce.kafka.OrderConfirmation
-
+        spring.json.type.mapping: paymentConfirmation:com.chiradev.ecommerce.notification.PaymentNotificationRequest
 application:
   config:
-    customer-url: http://localhost:8090/api/v1/customers
-    payment-url: http://localhost:8060/api/v1/payments
-    product-url: http://localhost:8050/api/v1/products
+    product-url: http://localhost:8222/api/v1/products

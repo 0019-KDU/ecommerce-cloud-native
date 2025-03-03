@@ -1,4 +1,4 @@
-package com.chiradev.ecommerec.order;
+package com.chiradev.ecommerec.payment;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/orders")
+@RequestMapping("/api/v1/payments")
 @RequiredArgsConstructor
-public class OrderController {
+public class PaymentController {
 
-    private final OrderService service;
+    private final PaymentService service;
 
     @PostMapping
-    public ResponseEntity<Integer> createOrder(
-            @RequestBody @Valid OrderRequest request
+    public ResponseEntity<Integer> createPayment(
+            @RequestBody @Valid PaymentRequest request
     ) {
-        return ResponseEntity.ok(service.createOrder(request));
+        return ResponseEntity.ok(service.createPayment(request));
     }
 }
