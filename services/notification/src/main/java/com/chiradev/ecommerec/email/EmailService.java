@@ -4,6 +4,9 @@ import com.chiradev.ecommerec.kafka.order.Product;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -18,12 +21,12 @@ import java.util.Map;
 
 import static com.chiradev.ecommerec.email.EmailTemplates.ORDER_CONFIRMATION;
 import static com.chiradev.ecommerec.email.EmailTemplates.PAYMENT_CONFIRMATION;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class EmailService {
-
+    private static final Logger log = LoggerFactory.getLogger(EmailService.class);
     private final JavaMailSender mailSender;
     private final SpringTemplateEngine templateEngine;
 

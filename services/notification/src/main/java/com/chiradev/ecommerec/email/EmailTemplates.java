@@ -1,6 +1,9 @@
 package com.chiradev.ecommerec.email;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
 
 public enum EmailTemplates {
 
@@ -8,9 +11,7 @@ public enum EmailTemplates {
     ORDER_CONFIRMATION("order-confirmation.html", "Order confirmation")
     ;
 
-    @Getter
     private final String template;
-    @Getter
     private final String subject;
 
 
