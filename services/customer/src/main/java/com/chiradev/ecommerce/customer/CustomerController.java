@@ -9,7 +9,7 @@ import java.io.Serial;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
 public class CustomerController {
 
