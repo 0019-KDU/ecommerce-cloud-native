@@ -5,10 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@JsonInclude(Include.NON_EMPTY)
 public record OrderRequest(
         Integer id,
         String reference,
@@ -23,4 +26,5 @@ public record OrderRequest(
         @NotEmpty(message = "You should at least purchase one product")
         List<PurchaseRequest> products
 ) {
+
 }

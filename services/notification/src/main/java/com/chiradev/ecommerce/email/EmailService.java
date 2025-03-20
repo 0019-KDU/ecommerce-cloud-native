@@ -4,6 +4,7 @@ import com.chiradev.ecommerce.kafka.order.Product;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -25,13 +26,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Service
 @RequiredArgsConstructor
 public class EmailService {
+
     private static final Logger log = LoggerFactory.getLogger(EmailService.class);
     private final JavaMailSender mailSender;
-
-
     private final SpringTemplateEngine templateEngine;
-
-
 
     @Async
     public void sendPaymentSuccessEmail(
@@ -43,7 +41,7 @@ public class EmailService {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, UTF_8.name());
-        messageHelper.setFrom("contact@aliboucoding.com");
+        messageHelper.setFrom("contact@chiradev.com");
 
         final String templateName = PAYMENT_CONFIRMATION.getTemplate();
 
@@ -80,7 +78,7 @@ public class EmailService {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, UTF_8.name());
-        messageHelper.setFrom("chirantharavishka@gmail.com");
+        messageHelper.setFrom("contact@chiradev.com");
 
         final String templateName = ORDER_CONFIRMATION.getTemplate();
 

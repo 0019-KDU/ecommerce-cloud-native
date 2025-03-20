@@ -2,6 +2,7 @@ package com.chiradev.ecommerce.orderline;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +13,7 @@ public class OrderLineService {
 
     private final OrderLineRepository repository;
     private final OrderLineMapper mapper;
-
+    @Transactional
     public Integer saveOrderLine(OrderLineRequest request) {
         var order = mapper.toOrderLine(request);
         return repository.save(order).getId();

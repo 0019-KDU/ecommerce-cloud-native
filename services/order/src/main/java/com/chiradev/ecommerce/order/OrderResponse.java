@@ -1,10 +1,10 @@
 package com.chiradev.ecommerce.order;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.math.BigDecimal;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonInclude(Include.NON_EMPTY)
 public record OrderResponse(
         Integer id,
         String reference,

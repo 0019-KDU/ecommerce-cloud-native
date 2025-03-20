@@ -5,21 +5,22 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@Table(name = "customer_line")
 public class OrderLine {
 
     @Id
     @GeneratedValue
     private Integer id;
+    @Version
+    private Integer version;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-    private double productId;
+    private Integer productId;
     private double quantity;
-
-
 }

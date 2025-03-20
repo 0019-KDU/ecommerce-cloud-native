@@ -18,16 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepository repository;
-    private final CustomerClient customerClient;
-    private final ProductClient productClient;
     private final OrderMapper mapper;
-    private final OrderLineService orderLineService;
+    private final CustomerClient customerClient;
     private final PaymentClient paymentClient;
+    private final ProductClient productClient;
+    private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
 
     @Transactional
@@ -49,7 +50,7 @@ public class OrderService {
                     )
             );
         }
-        PaymentRequest paymentRequest = new PaymentRequest(
+        var paymentRequest = new PaymentRequest(
                 request.amount(),
                 request.paymentMethod(),
                 order.getId(),
@@ -84,4 +85,3 @@ public class OrderService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format("No order found with the provided ID: %d", id)));
     }
 }
-
